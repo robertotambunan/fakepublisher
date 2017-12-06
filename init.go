@@ -9,7 +9,7 @@ import (
 var NsqProducer *nsq.Producer
 
 //Change with your nsq address
-const nsqAddress = "devel-go.tkpd:4150"
+const nsqAddress = "xx:port"
 
 func initialize() {
 	var err error
