@@ -6,11 +6,14 @@ import (
 
 func main() {
 	log.Println("Initializing...")
-	initialize()
-	log.Println("Publishing...")
-	err := handlerPublish()
+	err := initialize()
 	if err != nil {
-		log.Println("[error][warnig]Failed to do anything")
+		log.Fatal("Failed Initialize!", err)
+	}
+	log.Println("Publishing...")
+	err = handlerPublish()
+	if err != nil {
+		log.Println("[error][warning]Failed to do anything")
 	}
 }
 
@@ -19,7 +22,7 @@ func handlerPublish() (err error) {
 	for _, msg := range message {
 		err = publish(msg)
 		if err != nil {
-			log.Println("[error][main]Failed to publish")
+			log.Println("[error][main]Failed to publish", err)
 		}
 	}
 	return
